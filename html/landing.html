@@ -40,10 +40,39 @@
     </main>
 
     <script>
-      // Guardia simple: si no hay token, regresa al login
-      if (!sessionStorage.getItem("authToken")) {
-        window.location.href = "index.html";
-      }
+      // Validación de sesión: verifica el token contra DummyJSON.
+      // Si no hay token, o si DummyJSON no reconoce el token / los datos
+      // del usuario no coinciden, regresa al login.
+      (async function validateSession() {
+        const token = sessionStorage.getItem("authToken");
+        const storedUser = sessionStorage.getItem("authUser");
+
+        if (!token || !storedUser) {
+          window.location.replace("index.html");
+          return;
+        }
+
+        try {
+          const res = await fetch("https://dummyjson.com/auth/me", {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+
+          if (!res.ok) throw new Error("Token inválido o expirado");
+
+          const current = await res.json();
+          const local = JSON.parse(storedUser);
+
+          // El usuario que devuelve /auth/me debe ser el mismo guardado
+          // al iniciar sesión (mismo id y mismo username).
+          if (current.id !== local.id || current.username !== local.username) {
+            throw new Error("Los datos del usuario no coinciden");
+          }
+        } catch (err) {
+          sessionStorage.removeItem("authToken");
+          sessionStorage.removeItem("authUser");
+          window.location.replace("index.html");
+        }
+      })();
     </script>
   </body>
 </html>

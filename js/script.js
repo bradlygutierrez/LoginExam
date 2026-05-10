@@ -20,7 +20,7 @@ togglePassword.addEventListener("click", () => {
     isPassword ? "Ocultar contraseña" : "Mostrar contraseña"
   );
 });
-
+//limpiar errores al escribir
 [usernameInput, passwordInput].forEach((input) => {
   input.addEventListener("input", () => clearFieldError(input));
 });
@@ -32,7 +32,7 @@ function clearFieldError(input) {
   errorEl.classList.remove("visible");
   errorEl.textContent = "";
 }
-
+// Mostrar error debajo del campo
 function showFieldError(input, message) {
   input.classList.add("input-invalid");
   const errorEl =
@@ -40,7 +40,7 @@ function showFieldError(input, message) {
   errorEl.textContent = message;
   errorEl.classList.add("visible");
 }
-
+// Mostrar mensaje general en el formulario
 function showFormMessage(type, message) {
   formMessage.innerHTML = "";
   if (!message) return;
@@ -49,7 +49,7 @@ function showFormMessage(type, message) {
   div.textContent = message;
   formMessage.appendChild(div);
 }
-
+// Controlar estado de carga del botón
 function setLoading(isLoading) {
   submitBtn.disabled = isLoading;
   submitBtn.classList.toggle("is-loading", isLoading);
@@ -57,7 +57,7 @@ function setLoading(isLoading) {
     ? "Verificando..."
     : "Iniciar sesión";
 }
-
+// Validar campos antes de enviar
 function validate(username, password) {
   let valid = true;
 
@@ -79,14 +79,14 @@ function validate(username, password) {
 
   return valid;
 }
-
+// Manejar envío del formulario
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   showFormMessage(null, "");
 
   const username = usernameInput.value.trim();
   const password = passwordInput.value;
-
+  
   if (!validate(username, password)) return;
 
   setLoading(true);
@@ -100,11 +100,28 @@ form.addEventListener("submit", async (e) => {
 
     const data = await response.json();
 
-    if (!response.ok) {
-      throw new Error(data.message || "Credenciales inválidas");
+    // DummyJSON responde 400 cuando usuario o contraseña no coinciden.
+    if (response.status === 400) {
+      showFieldError(passwordInput, "Usuario o contraseña incorrectos");
+      throw new Error("La contraseña no coincide con la registrada en DummyJSON");
     }
 
-    sessionStorage.setItem("authToken", data.accessToken || data.token || "");
+    if (!response.ok) {
+      throw new Error(data.message || "Error de autenticación");
+    }
+
+    // Validar que la respuesta contenga los campos esperados.
+    const token = data.accessToken || data.token;
+    if (!token || !data.username || !data.id) {
+      throw new Error("Respuesta inválida del servidor de autenticación");
+    }
+
+    // Confirmación adicional: el username devuelto debe coincidir con el enviado.
+    if (data.username.toLowerCase() !== username.toLowerCase()) {
+      throw new Error("Los datos del usuario no coinciden");
+    }
+
+    sessionStorage.setItem("authToken", token);
     sessionStorage.setItem("authUser", JSON.stringify(data));
 
     showFormMessage(
