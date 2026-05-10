@@ -1,0 +1,43 @@
+/* Flexbox */
+.flex {
+  display: flex;
+}
+
+/* Centrado con flex */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+}
+
+/* Texto centrado */
+.text-center {
+  text-align: center;
+}
+
+/* Width completo */
+.w-full {
+  width: 100%;
+}
+
+/* Márgenes superiores */
+.mt-1 {
+  margin-top: var(--space-1);
+}
+
+.mt-2 {
+  margin-top: var(--space-2);
+}
+
+.mt-3 {
+  margin-top: var(--space-3);
+}
+
+.mt-4 {
+  margin-top: var(--space-4);
+}

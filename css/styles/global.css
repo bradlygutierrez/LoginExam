@@ -1,0 +1,26 @@
+/*Fondo general*/
+body {
+  background: linear-gradient(
+    180deg,
+    #0f172a 0%,
+    #111827 100%
+  );
+}
+
+/*Contenedor reutilizable*/
+.container {
+  width: min(90%, var(--container-width));
+  margin-inline: auto;
+}
+
+/* Secciones */
+.section {
+  padding: var(--space-6) 0;
+}
+
+/*Centrado completo*/
+.page-center {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
