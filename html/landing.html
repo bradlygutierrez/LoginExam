@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing | UNICIT</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/styles/reset.css" />
+    <link rel="stylesheet" href="../css/styles/variables.css" />
+    <link rel="stylesheet" href="../css/styles/tipografia.css" />
+    <link rel="stylesheet" href="../css/styles/global.css" />
+    <link rel="stylesheet" href="../css/styles/utilities.css" />
+    <link rel="stylesheet" href="../css/styles/componenetes.css" />
+    <!-- TODO: el integrante encargado debe crear y enlazar su propio CSS aquí -->
+  </head>
+  <body>
+    <main class="page-center">
+      <!--
+        TODO (integrante asignado a la landing):
+        Diseñar esta página utilizando los estilos globales del proyecto:
+          - Variables CSS en css/styles/variables.css
+          - Componentes reutilizables en css/styles/componenetes.css
+          - Utilidades en css/styles/utilities.css
+
+        Al cargar la página, los datos del usuario autenticado están disponibles en
+        sessionStorage bajo las claves "authToken" y "authUser" (JSON con
+        firstName, lastName, email, image, etc.).
+      -->
+      <section class="container text-center">
+        <h1>Landing</h1>
+        <p class="mt-3">Esta sección será diseñada por otro miembro del equipo.</p>
+      </section>
+    </main>
+
+    <script>
+      // Validación de sesión: verifica el token contra DummyJSON.
+      // Si no hay token, o si DummyJSON no reconoce el token / los datos
+      // del usuario no coinciden, regresa al login.
+      (async function validateSession() {
+        const token = sessionStorage.getItem("authToken");
+        const storedUser = sessionStorage.getItem("authUser");
+
+        if (!token || !storedUser) {
+          window.location.replace("index.html");
+          return;
+        }
+
+        try {
+          const res = await fetch("https://dummyjson.com/auth/me", {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+
+          if (!res.ok) throw new Error("Token inválido o expirado");
+
+          const current = await res.json();
+          const local = JSON.parse(storedUser);
+
+          // El usuario que devuelve /auth/me debe ser el mismo guardado
+          // al iniciar sesión (mismo id y mismo username).
+          if (current.id !== local.id || current.username !== local.username) {
+            throw new Error("Los datos del usuario no coinciden");
+          }
+        } catch (err) {
+          sessionStorage.removeItem("authToken");
+          sessionStorage.removeItem("authUser");
+          window.location.replace("index.html");
+        }
+      })();
+    </script>
+  </body>
+</html>
