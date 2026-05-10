@@ -1,0 +1,106 @@
+/*
+   LOGIN
+*/
+
+.login-section {
+  width: min(92%, 420px);
+}
+
+.login-card {
+  padding: var(--space-5) var(--space-4);
+}
+
+.login-title {
+  font-size: var(--text-2xl);
+}
+
+.login-subtitle {
+  font-size: var(--text-sm);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-error {
+  display: none;
+  font-size: var(--text-xs);
+  color: var(--color-error);
+  margin-top: var(--space-1);
+}
+
+.field-error.visible {
+  display: block;
+}
+
+.input.input-invalid {
+  border-color: var(--color-error);
+}
+
+/* Wrapper para input + botón ver/ocultar */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper .input {
+  padding-right: 3.5rem;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-muted);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.password-toggle:hover {
+  color: var(--color-secondary);
+}
+
+/* Botón submit con estado de carga */
+.btn-primary[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-spinner {
+  display: none;
+  width: 1rem;
+  height: 1rem;
+  margin-left: var(--space-2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  vertical-align: middle;
+  animation: spin 0.7s linear infinite;
+}
+
+.btn.is-loading .btn-spinner {
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.login-hint {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.login-hint strong {
+  color: var(--color-text);
+  font-weight: var(--fw-semibold);
+}
+

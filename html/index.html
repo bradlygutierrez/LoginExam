@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar sesión | UNICIT</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/styles/reset.css" />
+    <link rel="stylesheet" href="../css/styles/variables.css" />
+    <link rel="stylesheet" href="../css/styles/tipografia.css" />
+    <link rel="stylesheet" href="../css/styles/global.css" />
+    <link rel="stylesheet" href="../css/styles/utilities.css" />
+    <link rel="stylesheet" href="../css/styles/componenetes.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <main class="page-center">
+      <section class="login-section">
+        <div class="card login-card">
+          <header class="login-header text-center">
+            <h1 class="login-title">Bienvenido</h1>
+            <p class="login-subtitle mt-2">
+              Ingresa tus credenciales para continuar
+            </p>
+          </header>
+
+          <form id="loginForm" class="login-form mt-4" novalidate>
+            <div class="input-group">
+              <label for="username" class="input-label">Usuario</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                class="input"
+                placeholder="ej. emilys"
+                autocomplete="username"
+                required
+              />
+              <small class="field-error" id="usernameError"></small>
+            </div>
+
+            <div class="input-group mt-3">
+              <label for="password" class="input-label">Contraseña</label>
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="input"
+                  placeholder="••••••••"
+                  autocomplete="current-password"
+                  required
+                />
+                <button
+                  type="button"
+                  class="password-toggle"
+                  id="togglePassword"
+                  aria-label="Mostrar contraseña"
+                >
+                  Ver
+                </button>
+              </div>
+              <small class="field-error" id="passwordError"></small>
+            </div>
+
+            <div id="formMessage" class="mt-3" aria-live="polite"></div>
+
+            <button
+              type="submit"
+              id="submitBtn"
+              class="btn btn-primary w-full mt-4"
+            >
+              <span class="btn-label">Iniciar sesión</span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
+
+            <p class="login-hint text-center mt-3">
+              Prueba con <strong>emilys</strong> / <strong>emilyspass</strong>
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>
