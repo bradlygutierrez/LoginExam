@@ -1,0 +1,98 @@
+/* ============================================================
+   PROYECTO PRIMER PARCIAL - SECCIÓN DE ANA
+   RESPONSIVE DESIGN, MEDIA QUERIES & QA MOBILE
+   ============================================================ */
+
+/* --- AJUSTES PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */
+@media screen and (max-width: 768px) {
+    
+    /* 1. HEADER: Logo y Botón en la misma línea */
+    header.container.flex {
+        display: flex !important;
+        flex-direction: row !important; 
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 1rem 0 !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1); /* Línea sutil clara */
+    }
+
+    header h2 {
+        font-size: 1.1rem !important;
+        color: white !important; /* Aseguramos que el texto sea blanco */
+    }
+
+    /* 2. BOTÓN CERRAR SESIÓN: Minimalista y discreto */
+    #logoutBtn {
+        background: transparent !important;
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        color: rgba(255,255,255,0.7) !important;
+        font-size: 0.7rem !important;
+        padding: 5px 10px !important;
+        border-radius: 4px;
+        text-transform: uppercase;
+        width: auto !important;
+    }
+
+    /* 3. CORRECCIÓN DE QA: Filtro de Roles (FONDO OSCURO) */
+    #filterContainer select, 
+    .filter-group select {
+        height: auto !important; 
+        padding: 12px 15px !important; 
+        line-height: 1.5 !important; 
+        font-size: 1rem !important;
+        width: 100% !important;
+        
+        /* Ajuste de Colores para integrarse al diseño oscuro */
+        background-color: rgba(255, 255, 255, 0.05) !important; /* Fondo casi transparente */
+        color: white !important; /* Texto blanco para que se lea */
+        border: 1px solid rgba(255, 255, 255, 0.2) !important; 
+        border-radius: 8px !important;
+        appearance: none; /* Quita el estilo por defecto de Windows/Android */
+    }
+
+    /* Estilo para las etiquetas de los filtros */
+    #filterContainer label, .filter-group label {
+        color: rgba(255, 255, 255, 0.8) !important;
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* 4. LANDING - TARJETAS EN COLUMNA */
+    .cards-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+        margin-top: 2rem !important;
+    }
+
+    .card {
+        width: 100% !important;
+        max-width: 320px;
+        background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    /* 5. TÍTULOS Y TEXTOS */
+    h1 {
+        color: white !important;
+        font-size: 1.6rem !important;
+        text-align: center;
+    }
+
+    p {
+        color: rgba(255, 255, 255, 0.7) !important;
+        font-size: 0.95rem !important;
+        text-align: center;
+    }
+}
+
+/* --- AJUSTES PARA PANTALLAS MUY PEQUEÑAS (Menos de 480px) --- */
+@media screen and (max-width: 480px) {
+    .input {
+        height: 48px !important;
+        font-size: 16px !important;
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        color: white !important;
+    }
+}
