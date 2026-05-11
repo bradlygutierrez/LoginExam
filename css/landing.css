@@ -136,3 +136,41 @@
 #logoutBtn:active {
     transform: translateY(-1px); /* Efecto de pulsado */
 }
+
+/* =========================================
+   FILTRO DEL EQUIPO
+   ========================================= */
+
+.filter-bar {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-4);
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.filter-field {
+  width: 100%;
+}
+
+#filterContainer select.input {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5L6 6.5L11 1.5' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+#filterContainer select.input option {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+@media (max-width: 650px) {
+  .filter-bar {
+    grid-template-columns: 1fr;
+  }
+}
