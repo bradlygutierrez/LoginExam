@@ -1,27 +1,15 @@
-/* ============================================================
-   PROYECTO PRIMER PARCIAL - SECCIÓN DE ANA
-   RESPONSIVE DESIGN, MEDIA QUERIES & QA MOBILE
-   ============================================================ */
-
-/* --- AJUSTES PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */
-@media screen and (max-width: 768px) {
+/* --- AJUSTES PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */@media screen and (max-width: 768px) {
     
-    /* 1. HEADER: Logo y Botón en la misma línea */
+    /* 1. HEADER: Logo y Botón minimalistas */
     header.container.flex {
         display: flex !important;
         flex-direction: row !important; 
         justify-content: space-between !important;
         align-items: center !important;
         padding: 1rem 0 !important;
-        border-bottom: 1px solid rgba(255,255,255,0.1); /* Línea sutil clara */
+        border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    header h2 {
-        font-size: 1.1rem !important;
-        color: white !important; /* Aseguramos que el texto sea blanco */
-    }
-
-    /* 2. BOTÓN CERRAR SESIÓN: Minimalista y discreto */
     #logoutBtn {
         background: transparent !important;
         border: 1px solid rgba(255,255,255,0.3) !important;
@@ -33,7 +21,22 @@
         width: auto !important;
     }
 
-    /* 3. CORRECCIÓN DE QA: Filtro de Roles (FONDO OSCURO) */
+    /* 2. CAMBIO DE TEXTO (QA UX): De "Cursor" a "Presiona" */
+    .instrucciones-equipo {
+        font-size: 0 !important; /* Esconde "Desliza el cursor..." */
+        margin-top: 10px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .instrucciones-equipo::after {
+        content: "Presiona las tarjetas para ver más detalles." !important;
+        font-size: 0.95rem !important; /* Muestra el nuevo texto */
+        color: #ccc !important;
+        display: block;
+        text-align: center;
+    }
+
+    /* 3. FILTRO DE ROLES: Fondo oscuro y legible */
     #filterContainer select, 
     .filter-group select {
         height: auto !important; 
@@ -41,58 +44,86 @@
         line-height: 1.5 !important; 
         font-size: 1rem !important;
         width: 100% !important;
-        
-        /* Ajuste de Colores para integrarse al diseño oscuro */
-        background-color: rgba(255, 255, 255, 0.05) !important; /* Fondo casi transparente */
-        color: white !important; /* Texto blanco para que se lea */
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        color: white !important;
         border: 1px solid rgba(255, 255, 255, 0.2) !important; 
         border-radius: 8px !important;
-        appearance: none; /* Quita el estilo por defecto de Windows/Android */
+        appearance: none;
+        margin-top: 10px;
     }
 
-    /* Estilo para las etiquetas de los filtros */
-    #filterContainer label, .filter-group label {
-        color: rgba(255, 255, 255, 0.8) !important;
-        display: block;
-        margin-bottom: 8px;
-        font-size: 0.9rem;
-    }
-
-    /* 4. LANDING - TARJETAS EN COLUMNA */
+    /* 4. LA TARJETA (Ajustada y Segura) */
     .cards-grid {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        gap: 20px !important;
-        margin-top: 2rem !important;
+        gap: 30px !important;
+        padding: 20px 0;
     }
 
     .card {
-        width: 100% !important;
-        max-width: 320px;
-        background-color: rgba(255, 255, 255, 0.05) !important;
+        width: 90% !important;
+        max-width: 340px;
+        background-color: rgba(255, 255, 255, 0.03) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 20px !important;
+        padding: 2rem 1.5rem 3rem 1.5rem !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        height: auto !important;
     }
 
-    /* 5. TÍTULOS Y TEXTOS */
-    h1 {
+    /* Foto, Nombre y Rol */
+    .card img, .profile-img {
+        width: 110px !important;
+        height: 110px !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+        margin-top: 0.5rem !important; 
+        margin-bottom: 0.8rem !important;
+        border: 3px solid #00bcd4 !important;
+    }
+
+    .card h3 {
+        margin-bottom: 0 !important;
+        font-size: 1.4rem !important;
         color: white !important;
-        font-size: 1.6rem !important;
-        text-align: center;
     }
 
-    p {
-        color: rgba(255, 255, 255, 0.7) !important;
-        font-size: 0.95rem !important;
-        text-align: center;
+    .card p:first-of-type, .role-text {
+        color: #00bcd4 !important;
+        margin-top: 2px !important;
+        margin-bottom: 12px !important; 
+        font-weight: 600 !important;
+    }
+
+    /* Línea y Enlaces */
+    .card hr {
+        width: 100% !important;
+        border: 0;
+        border-top: 1px solid rgba(255,255,255,0.1) !important;
+        margin: 0 0 1.5rem 0 !important;
+    }
+
+    .card-links, .social-links, .card-footer {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 25px !important;
+        width: 100% !important;
+    }
+
+    .card-links a, .social-links a {
+        font-size: 0.85rem !important;
+        color: #3498db !important;
+        text-decoration: none !important;
+        font-weight: bold !important;
+        text-transform: uppercase;
     }
 }
 
-/* --- AJUSTES PARA PANTALLAS MUY PEQUEÑAS (Menos de 480px) --- */
+/* --- MÓVILES MUY PEQUEÑOS --- */
 @media screen and (max-width: 480px) {
-    .input {
-        height: 48px !important;
-        font-size: 16px !important;
-        background-color: rgba(255, 255, 255, 0.05) !important;
-        color: white !important;
-    }
+    .card { width: 95% !important; }
 }
