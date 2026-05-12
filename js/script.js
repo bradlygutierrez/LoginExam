@@ -1,3 +1,4 @@
+//Este es el script encargado de manejar la lógica del login, validaciones y conexión con la API de autenticación. También controla el estado de carga del botón y muestra mensajes de error o éxito.
 const API_URL = "https://dummyjson.com/auth/login";
 
 const form = document.getElementById("loginForm");

@@ -1,20 +1,20 @@
-// LISTADO REAL DEL EQUIPO
-// Leonardo: Aquí es donde editas la información de cada uno.
+
 const teamMembers = [
   {
     name: "Bradly Gutierrez",
     role: "Integración & Deploy",
-    photo: "../img/bradly.jpg", // <-- NOTA: Pon aquí el link de su foto
-    bio: "Experto en manejo de APIs y despliegue en la nube.", // <-- NOTA: Su biografía aquí
-    github: "#", // <-- NOTA: Su link de GitHub
-    linkedin: "#" // <-- NOTA: Su link de LinkedIn
+    photo: "../img/bradly.jpg",
+    bio: "Experto en manejo de APIs y despliegue en la nube.",
+    github: "https://github.com/bradlygutierrez",
+    linkedin: "https://www.linkedin.com/in/bradly-guti%C3%A9rrez/"
   },
+
   {
     name: "Eduardo Barrera",
     role: "Login & Session",
     photo: "../img/eduardo.jpg",
     bio: "Especialista en seguridad y persistencia de datos.",
-    github: "#",
+    github: "https://github.com/Eduardobarrera487",
     linkedin: "#"
   },
   {
@@ -22,7 +22,7 @@ const teamMembers = [
     role: "Desarrollador Backend",
     photo: "../img/jose.jpg",
     bio: "Apasionado por la arquitectura de software.",
-    github: "#",
+    github: "https://github.com/JoseZapatar",
     linkedin: "#"
   },
   {
@@ -30,15 +30,15 @@ const teamMembers = [
     role: "Responsive & QA",
     photo: "../img/ana.jpg",
     bio: "Asegurando que la experiencia sea perfecta en todo dispositivo.",
-    github: "#",
-    linkedin: "#"
+    github: "https://github.com/marbell04",
+    linkedin: "https://www.linkedin.com/in/ana-marbell-zepeda-2372952b6/"
   },
   {
     name: "Reynerio Muñoz",
     role: "Filtros & UI Detalle",
-    photo: "https://via.placeholder.com/150",
+    photo: "../img/reynerio.jpg",
     bio: "Enfocado en la usabilidad y búsqueda eficiente.",
-    github: "#",
+    github: "https://github.com/Cefirica",
     linkedin: "#"
   },
   {
@@ -46,8 +46,8 @@ const teamMembers = [
     role: "Landing & API Fetch",
     photo: "../img/leonardo.jpg",
     bio: "Creador de esta interfaz dinámica y conexión de datos.",
-    github: "#",
-    linkedin: "#"
+    github: "https://github.com/LeObando07",
+    linkedin: "https://www.linkedin.com/in/leonardobando080207?trk=contact-info"
   }
 ];
 
@@ -78,6 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     list.forEach(member => {
+
+      
+
       const card = document.createElement("article");
       card.className = "card user-card";
 
@@ -90,11 +93,17 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="user-bio">${member.bio}</p>
           <div class="user-links">
             <a href="${member.github}" target="_blank" class="social-link">GitHub</a>
-            <a href="${member.linkedin}" target="_blank" class="social-link">LinkedIn</a>
+            <a href="${member.linkedin}" id="linkedinbtn" target="_blank" class="social-link">LinkedIn</a>
           </div>
         </div>
       `;
       usersGrid.appendChild(card);
+
+      if (member.linkedin === "#") {
+        const linkedinBtn = card.querySelector("#linkedinbtn");
+        if (linkedinBtn) {
+          linkedinBtn.remove();
+        }};
     });
   }
 
