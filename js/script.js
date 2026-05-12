@@ -131,7 +131,7 @@ form.addEventListener("submit", async (e) => {
     );
 
     setTimeout(() => {
-      window.location.href = "landing.html";
+      window.location.href = "./html/landing.html";
     }, 800);
   } catch (error) {
     showFormMessage("error", error.message || "Error al iniciar sesión");
