@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Opcional: sessionStorage.clear(); // Esto borra TODO lo que haya en sesión
 
       // 2. Redirigimos al login
-      window.location.replace("index.html");
+      window.location.replace("../index.html");
     });
   }
 
